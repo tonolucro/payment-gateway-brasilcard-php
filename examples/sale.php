@@ -10,10 +10,18 @@ use \Tonolucro\Payment\Gateway\Brasilcard\Model\Request\Sale;
 
 try{
 
-    $dotenv = new \Dotenv\Dotenv(__DIR__);
-    $dotenv->load();
+    /**
+     *
+     */
+    $dotenv = new \Dotenv\Dotenv(__DIR__); $dotenv->load();
+
     $merchantId = getenv('merchantId');
     $merchantKey = getenv('merchantKey');
+    $cardNumber = getenv('cardNumber');
+    $expirationYear = getenv('expirationYear');
+    $expirationMonth = getenv('expirationMonth');
+    $securityCode = getenv('securityCode');
+    $holder = getenv('holder');
 
     $manager = new Gateway(
         new Auth($merchantId, $merchantKey),
@@ -21,21 +29,21 @@ try{
     );
 
     $creditCard = (new CreditCard())
-        ->setCardNumber('')
-        ->setExpirationYear('')
-        ->setExpirationMonth('')
-        ->setSecurityCode('')
-        ->setHolder('');
+        ->setCardNumber($cardNumber)
+        ->setExpirationYear($expirationYear)
+        ->setExpirationMonth($expirationMonth)
+        ->setSecurityCode($securityCode)
+        ->setHolder($holder);
 
     $payment = (new Payment())
         ->setCreditCard( $creditCard )
-        ->setAmount( 0 )
+        ->setAmount( 1.23 )
         ->setInstallments( 1 )
         ->setNSU(time());
 
     $sale = (new Sale())
         ->setPayment( $payment )
-        ->setMerchantOrderId( 0 );
+        ->setMerchantOrderId( 12345678 );
 
     print_r($sale->jsonSerialize());
 

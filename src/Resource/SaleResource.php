@@ -17,11 +17,11 @@ class SaleResource extends Resource
     public function create(Sale $sale){
         try
         {
-            /*$result = $this->getClient()->post('sale',
+            $result = $this->getClient()->post('Sale',
                 $sale->jsonSerialize()
-            );*/
+            );
 
-            return new Transaction();
+            return new Transaction($result['Payment']);
 
         }catch (\Exception $exception){
             throw $exception;

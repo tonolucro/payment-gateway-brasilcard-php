@@ -1,6 +1,7 @@
 <?php
 namespace Tonolucro\Payment\Gateway\Brasilcard\Model\Request;
 
+use Tonolucro\Payment\Gateway\Brasilcard\Helper\Convert;
 use Tonolucro\Payment\Gateway\Brasilcard\Model\Model;
 
 class Payment extends Model
@@ -27,7 +28,7 @@ class Payment extends Model
      */
     public function getAmount()
     {
-        return $this->amount;
+        return Convert::valueAmount($this->amount);
     }
 
     /**

@@ -3,7 +3,7 @@ namespace Tonolucro\Payment\Gateway\Brasilcard\Resource;
 
 use Tonolucro\Payment\Gateway\Brasilcard\Http\Client;
 
-abstract class Resource implements \JsonSerializable
+abstract class Resource
 {
     /**
      * @var Client
@@ -29,8 +29,4 @@ abstract class Resource implements \JsonSerializable
         return $this->client;
     }
 
-    public function jsonSerialize()
-    {
-        // TODO: Implement jsonSerialize() method.
-    }
 }

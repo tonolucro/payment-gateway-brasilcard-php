@@ -125,7 +125,7 @@ class Client
                 [
                     RequestOptions::HEADERS => $this->getHeaders(),
                     RequestOptions::JSON => $body,
-                    RequestOptions::DEBUG => false
+                    RequestOptions::DEBUG => true
                 ]
             );
 
