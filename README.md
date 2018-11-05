@@ -31,7 +31,7 @@ composer require tonolucro/payment-gateway-brasilcard-php
 
 ## Documentação da API
 
-Documentação completa da API está disponível no link [https://github.com/Tonolucro/payment-gateway-brasilcard-php/docs/](https://github.com/Tonolucro/payment-gateway-brasilcard-php/docs/)
+Documentação completa da API está disponível no link [https://github.com/Tonolucro/payment-gateway-brasilcard-php/tree/master/docs/](https://github.com/Tonolucro/payment-gateway-brasilcard-php/tree/master/docs/)
 
 ## Utilizando o SDK
 
