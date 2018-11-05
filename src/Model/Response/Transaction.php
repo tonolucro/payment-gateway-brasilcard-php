@@ -1,10 +1,37 @@
 <?php
+/**
+ * This file is part of Tonolucro\Payment\Gateway\Brasilcard
+ *
+ * @copyright Copyright (c) Tonolucro <https://www.tonolucro.com>
+ * @link https://github.com/tonolucro/payment-gateway-brasilcard-php
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Tonolucro\Payment\Gateway\Brasilcard\Model\Response;
 
 use Tonolucro\Payment\Gateway\Brasilcard\Model\Model;
+use Tonolucro\Payment\Gateway\Brasilcard\Model\Request\Payment;
+use Tonolucro\Payment\Gateway\Brasilcard\Service\SaleService;
 
 class Transaction extends Model
 {
+    /**
+     * Transaction constructor.
+     * @param array|null $data
+     */
+    public function __construct(array $data = null)
+    {
+        parent::__construct($data);
+
+        $this->setSuccess(
+            (new SaleService())->transactionSuccess( $this->getReturnCode() )
+        );
+
+        return $this;
+    }
+
     /**
      * @var string
      */
@@ -33,6 +60,10 @@ class Transaction extends Model
      * @var string
      */
     protected $localTransactionDateTime;
+    /**
+     * @var Payment
+     */
+    protected $payment;
 
     /**
      * @return string
@@ -127,7 +158,7 @@ class Transaction extends Model
     /**
      * @return bool
      */
-    public function getSuccess()
+    public function isSuccess()
     {
         return $this->success;
     }
@@ -157,6 +188,27 @@ class Transaction extends Model
     public function setLocalTransactionDateTime($localTransactionDateTime)
     {
         $this->localTransactionDateTime = $localTransactionDateTime;
+        return $this;
+    }
+
+    /**
+     * @return Payment
+     */
+    public function getPayment()
+    {
+        return $this->payment;
+    }
+
+    /**
+     * @param Payment $payment
+     * @return $this
+     */
+    public function setPayment($payment)
+    {
+        if( is_array($payment) ){
+            $payment = new Payment($payment);
+        }
+        $this->payment = $payment;
         return $this;
     }
 
