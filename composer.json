@@ -1,0 +1,38 @@
+{
+    "name": "tonolucro/payment-gateway-brasilcard-php",
+    "description": "Biblioteca PHP de integração com a API Payments Brasilcard",
+    "keywords": ["tonolucro", "brasilcard", "api", "gateway", "payment"],
+    "homepage": "https://tonolucro.com/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Tonolucro",
+            "homepage": "https://tonolucro.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "ext-curl": "*",
+        "lib-curl": "*",
+        "lib-openssl": "*",
+        "guzzlehttp/guzzle": "^6.3",
+        "neitanod/forceutf8": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6",
+        "vlucas/phpdotenv": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tonolucro\\Payment\\Gateway\\Brasilcard\\": "src/"
+        }
+    },
+    "autoload-dev":      {
+        "psr-4":                 {
+            "Tonolucro\\Payment\\Gateway\\Brasilcard\\Tests\\": "tests/"
+        },
+        "exclude-from-classmap": [
+            "/tests/"
+        ]
+    }
+}
